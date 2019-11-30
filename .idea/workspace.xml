@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c02738c4-3675-4b8f-816b-617c8e3668e1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/src/main/java/com/techelevator/employeeskillstrackingapplication/EmployeeSkillsTrackingApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/employee-skills-tracking-application/src/test/java/com/techelevator/employeeskillstrackingapplication/EmployeeSkillsTrackingApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1UIrDWBCaPqmdN4077FovSYnSVK" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/employee-skills-tracking-application" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c02738c4-3675-4b8f-816b-617c8e3668e1" name="Default Changelist" comment="" />
+      <created>1575054830624</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1575054830624</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
