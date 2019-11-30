@@ -26,30 +26,12 @@ public class Employee {
 	private String lastName;
 	private String position;
 	
-	@ManyToMany(fetch = FetchType.LAZY, 
-			cascade = {
-				CascadeType.PERSIST,
-				CascadeType.MERGE	
-	})
-	@JoinTable(name="employee_skill",
-			joinColumns = { @JoinColumn(name="employee_id")},
-			inverseJoinColumns = {@JoinColumn(name="skill_id")})
-	private Set<Skill> skills = new HashSet<>();
-
 	public int getEmployeeId() {
 		return employeeId;
 	}
 
 	public void setEmployeeId(int employeeId) {
 		this.employeeId = employeeId;
-	}
-
-	public Set<Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(Set<Skill> skills) {
-		this.skills = skills;
 	}
 
 	public String getFirstName() {

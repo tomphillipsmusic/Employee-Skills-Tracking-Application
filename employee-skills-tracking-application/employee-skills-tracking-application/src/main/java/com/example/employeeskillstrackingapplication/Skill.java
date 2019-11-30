@@ -9,8 +9,15 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "skill")
@@ -23,12 +30,19 @@ public class Skill {
 	private String description;
 	private int rating;
 
-	@ManyToMany(fetch = FetchType.LAZY, 
-			cascade = { 
-					CascadeType.PERSIST, 
-					CascadeType.MERGE }, 
-			mappedBy = "skills")
-	private Set<Employee> employee = new HashSet<>();
+	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
+	 @JoinColumn(name = "employee_id", nullable = false)
+	 @OnDelete(action = OnDeleteAction.CASCADE)
+	 @JsonIgnore
+	 private Employee employee;
+	 
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
 
 	public long getSkillId() {
 		return skillId;
@@ -36,14 +50,6 @@ public class Skill {
 
 	public void setSkillId(long skillId) {
 		this.skillId = skillId;
-	}
-
-	public Set<Employee> getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Set<Employee> employee) {
-		this.employee = employee;
 	}
 
 	public void setName(String name) {
