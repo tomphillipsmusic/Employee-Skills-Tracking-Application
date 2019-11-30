@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <employee-table></employee-table>
+    <h6>{{ employees }}</h6>
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
@@ -23,18 +24,19 @@ export default {
       employees: []
     };
   },
-  methods: {
-    getEmployees() {
-      fetch(this.apiURL)
-        .then(response => {
-          return response.json();
-        })
-        .then(employees => {
-          this.employees = employees;
-        })
-        .catch(err => console.log(err));
-      console.log(this.employees);
-    }
+
+  created() {
+    fetch(this.apiURL)
+      .then(response => {
+        console.log("Fetching employees...");
+        return response.json();
+      })
+      .then(employees => {
+        console.log("Loading employees...");
+        this.employees = employees;
+      })
+      .catch(err => console.log(err));
+    console.log(this.employees);
   }
 };
 </script>
