@@ -7,27 +7,38 @@
         <td>Last Name</td>
         <td>Position</td>
       </thead>
-      <tr>
-        <td>Tom</td>
-        <td>Phillips</td>
-        <td>Associate Developer</td>
-      </tr>
-      <tr>
-        <td>Al</td>
-        <td>Gilson</td>
-        <td>Software Developer</td>
-      </tr>
-            <tr>
-        <td>Robin</td>
-        <td>Harris</td>
-        <td>Senior Develoepr</td>
+      <tr v-for="employee in employees" v-bind:key="employee.employeeId">
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName }}</td>
+        <td>{{ employee.position }}</td>
       </tr>
     </table>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      apiURL: "http://localhost:8080/employees/",
+      employees: [],
+    };
+  },
+
+  created() {
+    fetch(this.apiURL)
+      .then(response => {
+        console.log("Fetching employees...");
+        return response.json();
+      })
+      .then(employees => {
+        console.log("Loading employees...");
+        this.employees = employees;
+      })
+      .catch(err => console.log(err));
+    console.log(this.employees);
+  }
+};
 </script>
 
 <style></style>

@@ -24,7 +24,7 @@ public class SkillService {
 				employeeSkills.add(skill);
 			}
 		}
-		return allSkills;
+		return employeeSkills;
 	}
 	
 	public List<Skill> getAllSkills(){
