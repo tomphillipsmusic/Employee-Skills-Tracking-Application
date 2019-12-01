@@ -8,6 +8,7 @@
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Position</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -24,21 +25,50 @@
             </router-link>
           </td>
           <td>{{ employee.position }}</td>
+          <td>
+            <button
+              v-if="!updateForm"
+              v-on:click="showUpdateEmployeeForm(employee)"
+            >
+              Update
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
+    <update-employee-form
+      v-if="updateForm"
+      v-bind:employee="this.employee"
+    ></update-employee-form>
   </div>
 </template>
 
 <script>
+import UpdateEmployeeForm from "@/components/UpdateEmployeeForm.vue";
+
 export default {
+  name: "employee-table",
+  components: {
+    UpdateEmployeeForm
+  },
   data() {
     return {
       apiURL: "http://localhost:8080/employees/",
-      employees: []
+      employees: [],
+      updateForm: false,
+      employeeId: 0,
+      employee: Object
     };
   },
-
+  methods: {
+    setEmployeeId(employeeId) {
+      this.employeeId = employeeId;
+    },
+    showUpdateEmployeeForm(employee) {
+      this.employee = employee;
+      this.updateForm = true;
+    }
+  },
   created() {
     fetch(this.apiURL)
       .then(response => {

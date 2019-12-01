@@ -3,15 +3,6 @@
     <h2>Update Employee</h2>
     <form class="form">
       <div class="form-input">
-        <label for="employeeId">Employee ID</label>
-        <input
-          type="number"
-          name="employeeId"
-          v-model="employee.employeeId"
-          v-on:change="getEmployee"
-        />
-      </div>
-      <div class="form-input">
         <label for="firstName">First Name</label>
         <input
           type="text"
@@ -44,14 +35,16 @@
 export default {
   data() {
     return {
-      employee: {
-        employeeId: 0,
-        firstName: "",
-        lastName: "",
-        position: ""
-      },
       apiUrl: "http://localhost:8080/employees"
     };
+  },
+  props: {
+    employee: {
+      employeeId: String,
+      firstName: String,
+      lastName: String,
+      position: String
+    }
   },
   computed: {
     isValidForm() {
@@ -84,20 +77,20 @@ export default {
       })
         .then(response => {
           if (response.ok) {
-            console.log('Getting employee information...')  
+            console.log("Getting employee information...");
             return response.json();
           }
         })
         .then(employee => {
-          console.log('Employee found')  
+          console.log("Employee found");
           this.employee = employee;
         })
         .catch(err => {
-            console.error(err);
-            console.log('Employee not found')
-            this.employee.firstName = '';
-            this.employee.lastName = '';
-            this.employee.position = '';
+          console.error(err);
+          console.log("Employee not found");
+          this.employee.firstName = "";
+          this.employee.lastName = "";
+          this.employee.position = "";
         });
     }
   }

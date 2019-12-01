@@ -5,7 +5,6 @@
       Add Employee
     </button>
     <create-employee-form v-if="saveEmployeeForm"></create-employee-form>
-    <update-employee-form></update-employee-form>
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
@@ -16,15 +15,13 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import EmployeeTable from "@/components/EmployeeTable.vue";
 import CreateEmployeeForm from "@/components/CreateEmployeeForm.vue";
-import UpdateEmployeeForm from "@/components/UpdateEmployeeForm.vue";
 
 export default {
   name: "home",
   components: {
     EmployeeTable,
     HelloWorld,
-    CreateEmployeeForm,
-    UpdateEmployeeForm
+    CreateEmployeeForm
   },
   data() {
     return {
