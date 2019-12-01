@@ -1,31 +1,46 @@
 <template>
   <div id="update-skill-form">
     <h2>Update Skill</h2>
-    <div>
-      <div class="form-group">
-        <label for="name">Skill Name</label>
-        <input class="form-control"
-          type="text"
-          name="name"
-          v-model="skill.name"
-          v-bind:placeholder="skill.name"
-        />
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <div class="form-group">
+          <label for="name">Skill Name</label>
+          <input
+            class="form-control"
+            type="text"
+            name="name"
+            v-model="skill.name"
+            v-bind:placeholder="skill.name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="rating">Rating</label>
+          <input
+            class="form-control"
+            type="text"
+            name="rating"
+            v-model="skill.rating"
+          />
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            class="form-control"
+            type="text"
+            name="description"
+            v-model="skill.description"
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+          :disabled="!isValidForm"
+          v-on:click="updateSkill"
+        >
+          Update Skill
+        </button>
       </div>
-      <div class="form-group">
-        <label for="rating">Rating</label>
-        <input class="form-control" type="text" name="rating" v-model="skill.rating" />
-      </div>
-      <div class="form-group">
-        <label for="description">Description</label>
-        <input class="form-control" type="text" name="description" v-model="skill.description" />
-      </div>
-      <button
-        class="btn btn-primary"
-        :disabled="!isValidForm"
-        v-on:click="updateSkill"
-      >
-        Update Skill
-      </button>
+      <div class="col"></div>
     </div>
     <h6>{{ JSON.stringify(this.skill) }}</h6>
   </div>
@@ -72,7 +87,7 @@ export default {
       )
         .then(response => {
           if (response.ok) {
-            console.log('test1');
+            console.log("test1");
             this.$emit("close-update-form");
           }
         })

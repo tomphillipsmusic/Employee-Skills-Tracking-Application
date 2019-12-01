@@ -1,27 +1,48 @@
 <template>
   <div id="create-skill-form">
     <h2>Add Skill</h2>
-    <form class="form">
-      <div class="form-input">
-        <label for="name">Skill Name</label>
-        <input type="text" name="name" v-model="skill.name" />
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <form class="form">
+          <div class="form-group">
+            <label for="name">Skill Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="name"
+              v-model="skill.name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="rating">Rating</label>
+            <input
+              class="form-control"
+              type="text"
+              name="rating"
+              v-model="skill.rating"
+            />
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input
+              class="form-control"
+              type="text"
+              name="description"
+              v-model="skill.description"
+            />
+          </div>
+          <button
+            class="btn btn-primary"
+            :disabled="!isValidForm"
+            v-on:click="saveSkill"
+          >
+            Add Skill
+          </button>
+        </form>
       </div>
-      <div class="form-input">
-        <label for="rating">Rating</label>
-        <input type="text" name="rating" v-model="skill.rating" />
-      </div>
-      <div class="form-input">
-        <label for="description">Description</label>
-        <input type="text" name="description" v-model="skill.description" />
-      </div>
-      <button
-        class="btn btn-primary"
-        :disabled="!isValidForm"
-        v-on:click="saveSkill"
-      >
-        Add Skill
-      </button>
-    </form>
+      <div class="col"></div>
+    </div>
     <h6>{{ JSON.stringify(this.skill) }}</h6>
   </div>
 </template>
