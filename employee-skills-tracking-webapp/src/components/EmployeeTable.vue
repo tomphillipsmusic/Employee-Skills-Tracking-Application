@@ -27,12 +27,18 @@
           </td>
           <td>{{ employee.position }}</td>
           <td>
-            <button v-on:click="showUpdateEmployeeForm(employee)">
+            <button
+              class="btn btn-secondary"
+              v-on:click="showUpdateEmployeeForm(employee)"
+            >
               Update
             </button>
           </td>
           <td>
-            <button v-on:click="showDeleteConfirmation(employee)">
+            <button
+              class="btn btn-danger"
+              v-on:click="showDeleteConfirmation(employee)"
+            >
               Delete
             </button>
           </td>

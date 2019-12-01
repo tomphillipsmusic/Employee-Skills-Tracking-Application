@@ -4,12 +4,13 @@
     <p></p>
     <h2>{{ employee.position }}</h2>
     <skills-table v-bind:employeeId="employeeId"></skills-table>
-    <button v-if="!createSkillForm" v-on:click="showCreateSkillForm">
+    <button class="btn btn-primary" v-if="!createSkillForm" v-on:click="showCreateSkillForm">
       Add Skill
     </button>
     <create-skill-form
       v-if="createSkillForm"
       v-bind:id="employeeId"
+      @close-form="closeForm"
     ></create-skill-form>
   </div>
 </template>

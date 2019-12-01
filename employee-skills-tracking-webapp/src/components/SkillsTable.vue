@@ -16,10 +16,18 @@
           <td>{{ skill.rating }}</td>
           <td>{{ skill.description }}</td>
           <td>
-            <button v-on:click="showUpdateSkillForm(skill)">Update</button>
+            <button
+              class="btn btn-secondary"
+              v-on:click="showUpdateSkillForm(skill)"
+            >
+              Update
+            </button>
           </td>
           <td>
-            <button v-on:click="displayDeleteConfirmation(skill)">
+            <button
+              class="btn btn-danger"
+              v-on:click="displayDeleteConfirmation(skill)"
+            >
               Delete
             </button>
           </td>

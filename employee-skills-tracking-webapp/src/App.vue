@@ -1,8 +1,12 @@
 <template>
   <div id="app">
+    <img src="./assets/perficient-logo.jpg" />
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/"><span id="home">Home</span></router-link> |
+      <a
+        href="https://documenter.getpostman.com/view/9650473/SWDzeM91?version=latest"
+        >Documentation</a
+      >
     </div>
     <router-view />
   </div>
@@ -17,6 +21,10 @@
   color: #2c3e50;
 }
 
+body{
+  background:rgba(235, 229, 229, 0.931);
+}
+
 #nav {
   padding: 30px;
 }
@@ -26,8 +34,18 @@
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#home {
+  color: rgba(204, 0, 0, 0.931);
+}
+
+#skills-table,
+#employee-table {
+  padding: 10px;
+  margin: 20px;
+}
+img {
+  width: 50%;
+  height: auto;
 }
 </style>
 

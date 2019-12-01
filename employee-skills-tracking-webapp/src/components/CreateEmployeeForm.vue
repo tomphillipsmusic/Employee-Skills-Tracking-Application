@@ -32,6 +32,7 @@
               v-model="employee.position"
             />
           </div>
+
           <button
             class="btn btn-primary"
             :disabled="!isValidForm"
@@ -43,7 +44,9 @@
       </div>
       <div class="col"></div>
     </div>
-    <h6>{{ JSON.stringify(this.employee) }}</h6>
+    <button class="btn btn-secondary" v-on:click="closeForm">
+      Close Form
+    </button>
   </div>
 </template>
 
@@ -83,9 +86,17 @@ export default {
           }
         })
         .catch(err => console.error(err));
+    },
+    closeForm() {
+      this.$emit("close-form");
     }
   }
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  padding: 5px;
+  margin: 5px;
+}
+</style>

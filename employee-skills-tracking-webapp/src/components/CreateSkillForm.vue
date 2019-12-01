@@ -43,7 +43,7 @@
       </div>
       <div class="col"></div>
     </div>
-    <h6>{{ JSON.stringify(this.skill) }}</h6>
+    <button class="btn btn-secondary" v-on:click="closeForm">Close Form</button>
   </div>
 </template>
 
@@ -88,7 +88,10 @@ export default {
           }
         })
         .catch(err => console.error(err));
-      this.$emit("closeForm");
+      this.closeForm();
+    },
+    closeForm() {
+      this.$emit("close-form");
     }
   },
   created() {
@@ -97,4 +100,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+button {
+  margin: 5px;
+  padding: 5px;
+}
+</style>

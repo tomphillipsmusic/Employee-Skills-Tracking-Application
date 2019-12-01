@@ -1,33 +1,49 @@
 <template>
   <div id="update-employee-form">
     <h2>Update Employee</h2>
-    <form class="form">
-      <div class="form-input">
-        <label for="firstName">First Name</label>
-        <input
-          type="text"
-          name="firstName"
-          v-model="employee.firstName"
-          v-bind:placeholder="employee.firstName"
-        />
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <form class="form">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="firstName"
+              v-model="employee.firstName"
+              v-bind:placeholder="employee.firstName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              name="lastName"
+              v-model="employee.lastName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="position">Position</label>
+            <input
+              class="form-control"
+              type="text"
+              name="position"
+              v-model="employee.position"
+            />
+          </div>
+          <button
+            class="btn btn-primary"
+            :disabled="!isValidForm"
+            v-on:click="updateEmployee"
+          >
+            Update Employee
+          </button>
+        </form>
       </div>
-      <div class="form-input">
-        <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" v-model="employee.lastName" />
-      </div>
-      <div class="form-input">
-        <label for="position">Position</label>
-        <input type="text" name="position" v-model="employee.position" />
-      </div>
-      <button
-        class="btn btn-primary"
-        :disabled="!isValidForm"
-        v-on:click="updateEmployee"
-      >
-        Update Employee
-      </button>
-    </form>
-    <h6>{{ JSON.stringify(this.employee) }}</h6>
+      <div class="col"></div>
+    </div>
   </div>
 </template>
 

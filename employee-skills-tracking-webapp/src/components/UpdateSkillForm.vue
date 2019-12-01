@@ -42,7 +42,6 @@
       </div>
       <div class="col"></div>
     </div>
-    <h6>{{ JSON.stringify(this.skill) }}</h6>
   </div>
 </template>
 

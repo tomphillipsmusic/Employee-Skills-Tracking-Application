@@ -8,7 +8,10 @@
     >
       Add Employee
     </button>
-    <create-employee-form v-if="employeeForm"></create-employee-form>
+    <create-employee-form
+      v-if="employeeForm"
+      @close-form="formCompleted"
+    ></create-employee-form>
   </div>
 </template>
 
@@ -38,3 +41,4 @@ export default {
   }
 };
 </script>
+
