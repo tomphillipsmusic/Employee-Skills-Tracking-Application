@@ -5,8 +5,21 @@
       {{ employee.lastName }}?
     </h3>
     <form>
-      <input type="submit" v-on:click="deleteEmployee" value="Yes" />
-      <button v-on:click="closeConfirmation">No</button>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <input
+            class="btn btn-danger"
+            type="submit"
+            v-on:click="deleteEmployee"
+            value="Yes"
+          />
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary" v-on:click="closeConfirmation">No</button>
+        </div>
+        <div class="col"></div>
+      </div>
     </form>
   </div>
 </template>
@@ -28,7 +41,7 @@ export default {
   },
   methods: {
     closeConfirmation() {
-      this.$emit("closeConfirmation");
+      this.$emit("close-confirmation");
     },
     deleteEmployee() {
       fetch(`${this.apiUrl}/${this.employee.employeeId}`, {
@@ -51,4 +64,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+</style>

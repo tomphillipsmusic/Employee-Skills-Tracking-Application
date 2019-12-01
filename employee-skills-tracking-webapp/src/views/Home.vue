@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-    <employee-table></employee-table>
-    <button v-if="!saveEmployeeForm" v-on:click="showSaveEmployeeForm">
+    <employee-table @close-add-employee="formCompleted"></employee-table>
+    <button
+      class="btn btn-primary"
+      v-if="!employeeForm"
+      v-on:click="showEmployeeForm"
+    >
       Add Employee
     </button>
-    <create-employee-form v-if="saveEmployeeForm"></create-employee-form>
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <create-employee-form v-if="employeeForm"></create-employee-form>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 import EmployeeTable from "@/components/EmployeeTable.vue";
 import CreateEmployeeForm from "@/components/CreateEmployeeForm.vue";
 
@@ -20,20 +21,19 @@ export default {
   name: "home",
   components: {
     EmployeeTable,
-    HelloWorld,
     CreateEmployeeForm
   },
   data() {
     return {
-      saveEmployeeForm: false
+      employeeForm: false
     };
   },
   methods: {
-    showSaveEmployeeForm() {
-      this.saveEmployeeForm = true;
+    showEmployeeForm() {
+      this.employeeForm = true;
     },
     formCompleted() {
-      this.SaveEmployeeForm = false;
+      this.employeeForm = false;
     }
   }
 };

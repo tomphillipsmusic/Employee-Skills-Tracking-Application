@@ -74,15 +74,12 @@ export default {
     getEmployees() {
       fetch(this.apiURL)
         .then(response => {
-          console.log("Fetching employees...");
           return response.json();
         })
         .then(employees => {
-          console.log("Loading employees...");
           this.employees = employees;
         })
-        .catch(err => console.log(err));
-      console.log(this.employees);
+        .catch(err => console.error(err));
     },
     setEmployeeId(employeeId) {
       this.employeeId = employeeId;
@@ -91,15 +88,16 @@ export default {
       this.employee = employee;
       this.updateForm = true;
       this.deleteConfirmation = false;
+      this.$emit("close-add-employee");
     },
     showDeleteConfirmation(employee) {
       this.employee = employee;
       this.deleteConfirmation = true;
       this.updateForm = false;
+      this.$emit("close-add-employee");
     },
     closeConfirmation() {
       this.deleteConfirmation = false;
-      this.getEmployees();
     }
   },
   created() {

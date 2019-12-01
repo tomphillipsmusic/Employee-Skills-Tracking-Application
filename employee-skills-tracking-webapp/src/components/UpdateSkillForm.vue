@@ -1,23 +1,23 @@
 <template>
   <div id="update-skill-form">
     <h2>Update Skill</h2>
-    <div class="form">
-      <div class="form-input">
+    <div>
+      <div class="form-group">
         <label for="name">Skill Name</label>
-        <input
+        <input class="form-control"
           type="text"
           name="name"
           v-model="skill.name"
           v-bind:placeholder="skill.name"
         />
       </div>
-      <div class="form-input">
+      <div class="form-group">
         <label for="rating">Rating</label>
-        <input type="text" name="rating" v-model="skill.rating" />
+        <input class="form-control" type="text" name="rating" v-model="skill.rating" />
       </div>
-      <div class="form-input">
+      <div class="form-group">
         <label for="description">Description</label>
-        <input type="text" name="description" v-model="skill.description" />
+        <input class="form-control" type="text" name="description" v-model="skill.description" />
       </div>
       <button
         class="btn btn-primary"
