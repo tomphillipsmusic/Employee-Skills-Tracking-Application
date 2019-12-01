@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <employee-table></employee-table>
-    <create-employee-form></create-employee-form>
+    <button v-if="!saveEmployeeForm" v-on:click="showSaveEmployeeForm">Add Employee</button>
+    <create-employee-form v-if="saveEmployeeForm"></create-employee-form>
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
@@ -19,6 +20,19 @@ export default {
     EmployeeTable,
     HelloWorld,
     CreateEmployeeForm
+  },
+  data(){
+    return {
+      saveEmployeeForm : false
+    }
+  },
+  methods: {
+    showSaveEmployeeForm(){
+      this.saveEmployeeForm = true;
+    },
+    formCompleted(){
+      this.SaveEmployeeForm = false;
+    }
   }
 };
 </script>
