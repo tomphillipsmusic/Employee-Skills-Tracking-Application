@@ -1,5 +1,7 @@
 <template>
   <div id="skills">
+    <h1>{{ employee.firstName }} {{ employee.lastName }}</h1>
+    <p><h2>{{employee.position}}</h2>
     <skills-table v-bind:employeeId="employeeId"></skills-table>
   </div>
 </template>
@@ -13,9 +15,22 @@ export default {
     SkillsTable
   },
   data() {
-      return {
-          employeeId : this.$route.params.employeeId
-      }
+    return {
+      employeeId: this.$route.params.employeeId,
+      employee: "",
+      apiUrl: 'http://localhost:8080/employees'
+    };
+  },
+  mounted() {
+    console.log(this.employeeId);
+    console.log(`${this.apiUrl}/${this.employeeId}`);
+    fetch(`${this.apiUrl}/${this.employeeId}`)
+      .then(response => {
+        return response.json();
+      })
+      .then(employee => {
+        this.employee = employee;
+      });
   }
 };
 </script>

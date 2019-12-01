@@ -8,9 +8,11 @@
         <td>Position</td>
       </thead>
       <tr v-for="employee in employees" v-bind:key="employee.employeeId">
-        <td>{{ employee.firstName }}</td>
-        <td>{{ employee.lastName }}</td>
-        <td>{{ employee.position }}</td>
+        <router-link v-bind:to="`/employees/${employee.employeeId}/skills`">
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.position }}</td>
+        </router-link>
       </tr>
     </table>
   </div>
@@ -21,7 +23,7 @@ export default {
   data() {
     return {
       apiURL: "http://localhost:8080/employees/",
-      employees: [],
+      employees: []
     };
   },
 
