@@ -43,22 +43,22 @@
       v-if="updateForm"
       v-bind:employee="this.employee"
     ></update-employee-form>
-    <delete-confirmation
+    <employee-delete-confirmation
       v-if="deleteConfirmation"
       v-bind:employee="employee"
-    ></delete-confirmation>
+    ></employee-delete-confirmation>
   </div>
 </template>
 
 <script>
 import UpdateEmployeeForm from "@/components/UpdateEmployeeForm.vue";
-import DeleteConfirmation from "@/components/DeleteConfirmation.vue";
+import EmployeeDeleteConfirmation from "@/components/EmployeeDeleteConfirmation.vue";
 
 export default {
   name: "employee-table",
   components: {
     UpdateEmployeeForm,
-    DeleteConfirmation
+    EmployeeDeleteConfirmation
   },
   data() {
     return {

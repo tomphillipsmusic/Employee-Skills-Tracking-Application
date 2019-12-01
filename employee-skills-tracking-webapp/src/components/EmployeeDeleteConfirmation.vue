@@ -1,5 +1,5 @@
 <template>
-  <div id="delete-confirmation">
+  <div id="employee-delete-confirmation">
     <h3>
       Are you sure you want to permanently delete {{ employee.firstName }}
       {{ employee.lastName }}?
