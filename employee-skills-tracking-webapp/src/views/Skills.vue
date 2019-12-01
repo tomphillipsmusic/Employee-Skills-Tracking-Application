@@ -4,24 +4,42 @@
     <p></p>
     <h2>{{ employee.position }}</h2>
     <skills-table v-bind:employeeId="employeeId"></skills-table>
+    <button v-if="!createSkillForm" v-on:click="showCreateSkillForm">
+      Add Skill
+    </button>
+    <create-skill-form
+      v-if="createSkillForm"
+      v-bind:id="employeeId"
+    ></create-skill-form>
   </div>
 </template>
 
 <script>
 import SkillsTable from "@/components/SkillsTable.vue";
+import CreateSkillForm from "@/components/CreateSkillForm.vue";
 
 export default {
   name: "skills",
   components: {
-    SkillsTable
+    SkillsTable,
+    CreateSkillForm
   },
   data() {
     return {
       employeeId: this.$route.params.employeeId,
       employee: "",
 
-      apiUrl: "http://localhost:8080/employees"
+      apiUrl: "http://localhost:8080/employees",
+      createSkillForm: false
     };
+  },
+  methods: {
+    showCreateSkillForm() {
+      this.createSkillForm = true;
+    },
+    closeForm() {
+      this.createSkillForm = false;
+    }
   },
   mounted() {
     console.log(this.employeeId);

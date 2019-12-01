@@ -9,6 +9,7 @@
           <th scope="col">Last Name</th>
           <th scope="col">Position</th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -26,11 +27,13 @@
           </td>
           <td>{{ employee.position }}</td>
           <td>
-            <button
-              v-if="!updateForm"
-              v-on:click="showUpdateEmployeeForm(employee)"
-            >
+            <button v-on:click="showUpdateEmployeeForm(employee)">
               Update
+            </button>
+          </td>
+          <td>
+            <button v-on:click="showDeleteConfirmation(employee)">
+              Delete
             </button>
           </td>
         </tr>
@@ -40,47 +43,67 @@
       v-if="updateForm"
       v-bind:employee="this.employee"
     ></update-employee-form>
+    <delete-confirmation
+      v-if="deleteConfirmation"
+      v-bind:employee="employee"
+    ></delete-confirmation>
   </div>
 </template>
 
 <script>
 import UpdateEmployeeForm from "@/components/UpdateEmployeeForm.vue";
+import DeleteConfirmation from "@/components/DeleteConfirmation.vue";
 
 export default {
   name: "employee-table",
   components: {
-    UpdateEmployeeForm
+    UpdateEmployeeForm,
+    DeleteConfirmation
   },
   data() {
     return {
       apiURL: "http://localhost:8080/employees/",
       employees: [],
       updateForm: false,
+      deleteConfirmation: false,
       employeeId: 0,
       employee: Object
     };
   },
   methods: {
+    getEmployees() {
+      fetch(this.apiURL)
+        .then(response => {
+          console.log("Fetching employees...");
+          return response.json();
+        })
+        .then(employees => {
+          console.log("Loading employees...");
+          this.employees = employees;
+        })
+        .catch(err => console.log(err));
+      console.log(this.employees);
+    },
     setEmployeeId(employeeId) {
       this.employeeId = employeeId;
     },
     showUpdateEmployeeForm(employee) {
       this.employee = employee;
       this.updateForm = true;
+      this.deleteConfirmation = false;
+    },
+    showDeleteConfirmation(employee) {
+      this.employee = employee;
+      this.deleteConfirmation = true;
+      this.updateForm = false;
+    },
+    closeConfirmation() {
+      this.deleteConfirmation = false;
+      this.getEmployees();
     }
   },
   created() {
-    fetch(this.apiURL)
-      .then(response => {
-        console.log("Fetching employees...");
-        return response.json();
-      })
-      .then(employees => {
-        console.log("Loading employees...");
-        this.employees = employees;
-      })
-      .catch(err => console.log(err));
-    console.log(this.employees);
+    this.getEmployees();
   }
 };
 </script>
