@@ -1,6 +1,6 @@
 <template>
   <div id="employee-table">
-    <h1>Perficient Employees</h1>
+    <h2>Perficient Employees</h2>
     <table class="table table-striped">
       <thead>
         <tr>

@@ -1,8 +1,8 @@
 <template>
   <div id="skills">
-    <h1>{{ employee.firstName }} {{ employee.lastName }}</h1>
+    <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
     <p></p>
-    <h2>{{ employee.position }}</h2>
+    <h3>{{ employee.position }}</h3>
     <skills-table v-bind:employeeId="employeeId"></skills-table>
     <button class="btn btn-primary" v-if="!createSkillForm" v-on:click="showCreateSkillForm">
       Add Skill
