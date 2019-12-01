@@ -1,19 +1,31 @@
 <template>
   <div id="employee-table">
     <h1>Perficient Employees</h1>
-    <table>
+    <table class="table table-striped">
       <thead>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Position</td>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Position</th>
+        </tr>
       </thead>
-      <tr v-for="employee in employees" v-bind:key="employee.employeeId">
-        <router-link v-bind:to="`/employees/${employee.employeeId}/skills`">
-          <td>{{ employee.firstName }}</td>
-          <td>{{ employee.lastName }}</td>
+      <tbody>
+        <tr v-for="employee in employees" v-bind:key="employee.employeeId">
+          <th scope="row">{{ employee.employeeId }}</th>
+          <td>
+            <router-link v-bind:to="`/employees/${employee.employeeId}/skills`">
+              {{ employee.firstName }}
+            </router-link>
+          </td>
+          <td>
+            <router-link v-bind:to="`/employees/${employee.employeeId}/skills`">
+              {{ employee.lastName }}
+            </router-link>
+          </td>
           <td>{{ employee.position }}</td>
-        </router-link>
-      </tr>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>

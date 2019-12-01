@@ -1,17 +1,20 @@
 <template>
   <div id="skills-table">
-    <table>
+    <table class="table table-striped">
       <thead>
-        <td>Skill</td>
-        <td></td>
-        <td>Rating</td>
-        <td>Description</td>
+        <th scope="col">Id</th>
+        <th scope="col">Skill</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Description</th>
       </thead>
-      <tr v-for="skill in skills" v-bind:key="skill.skillId">
-        <td>{{ skill.name }}</td>
-        <td>{{ skill.rating }}</td>
-        <td>{{ skill.description }}</td>
-      </tr>
+      <tbody>
+        <tr v-for="skill in skills" v-bind:key="skill.skillId">
+          <th scope="row">{{ skill.skillId }}</th>
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.rating }}</td>
+          <td>{{ skill.description }}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
