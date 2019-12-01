@@ -1,9 +1,25 @@
 <template>
   <div id="skill-delete-confirmation">
     <h3>Are you sure you want to permanently delete {{ skill.name }}?</h3>
+
     <form>
-      <input type="submit" v-on:click="deleteSkill" value="Yes" />
-      <button v-on:click="closeConfirmation">No</button>
+      <div class="row">
+        <div class="row"></div>
+        <div class="col">
+          <input
+            class="btn btn-danger"
+            type="submit"
+            v-on:click="deleteSkill"
+            value="Yes"
+          />
+        </div>
+        <div class="col">
+          <button class="btn btn-secondary" v-on:click="closeConfirmation">
+            No
+          </button>
+        </div>
+        <div class="row"></div>
+      </div>
     </form>
   </div>
 </template>
