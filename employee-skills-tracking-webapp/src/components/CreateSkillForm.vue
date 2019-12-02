@@ -32,13 +32,13 @@
               v-model="skill.description"
             />
           </div>
-          <button
+          <input
+            type="submit"
             class="btn btn-primary"
             :disabled="!isValidForm"
             v-on:click="saveSkill"
-          >
-            Add Skill
-          </button>
+            value="Add Skill"
+          />
         </form>
       </div>
       <div class="col"></div>
@@ -86,9 +86,9 @@ export default {
           if (response.ok) {
             console.log(this.skill);
           }
+          window.location.href=`/employees/${this.skill.employeeId}/skills`;
         })
         .catch(err => console.error(err));
-      this.closeForm();
     },
     closeForm() {
       this.$emit("close-form");

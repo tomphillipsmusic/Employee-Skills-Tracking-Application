@@ -72,8 +72,7 @@ export default {
       employees: [],
       updateForm: false,
       deleteConfirmation: false,
-      employeeId: 0,
-      employee: Object
+      employeeId: 0
     };
   },
   methods: {

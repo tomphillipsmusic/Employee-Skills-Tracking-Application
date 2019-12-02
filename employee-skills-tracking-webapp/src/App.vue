@@ -21,8 +21,8 @@
   color: #2c3e50;
 }
 
-body{
-  background:rgba(235, 229, 229, 0.931);
+body {
+  background: rgba(235, 229, 229, 0.931);
 }
 
 #nav {
