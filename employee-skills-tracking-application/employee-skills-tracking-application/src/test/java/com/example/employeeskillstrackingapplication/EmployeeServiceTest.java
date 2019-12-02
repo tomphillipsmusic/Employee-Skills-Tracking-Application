@@ -18,8 +18,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @DataJpaTest
 public class EmployeeServiceTest {
 	
-	EmployeeRepository employeeRepository;	
-	EmployeeService employeeService = new EmployeeService();
+	
+	EmployeeService employeeService = new EmployeeService();	
+	
+
 	
 	@Test
 	public void trueIsTrue() {
