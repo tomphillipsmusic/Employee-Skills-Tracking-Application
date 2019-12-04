@@ -1,4 +1,4 @@
-package com.example.employeeskillstrackingapplication;
+package com.example.employeeskillstrackingapplication.controller;
 
 import java.util.List;
 
@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import exceptions.EmployeeNotFoundException;
-import exceptions.InvalidDataException;
+import com.example.employeeskillstrackingapplication.exceptions.EmployeeNotFoundException;
+import com.example.employeeskillstrackingapplication.exceptions.InvalidDataException;
+import com.example.employeeskillstrackingapplication.model.Employee;
+import com.example.employeeskillstrackingapplication.service.EmployeeService;
 
 @CrossOrigin
 @RestController

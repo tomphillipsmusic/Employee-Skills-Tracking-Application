@@ -14,6 +14,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.employeeskillstrackingapplication.model.Employee;
+import com.example.employeeskillstrackingapplication.service.EmployeeService;
+
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class EmployeeServiceTest {

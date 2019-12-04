@@ -1,4 +1,4 @@
-package com.example.employeeskillstrackingapplication;
+package com.example.employeeskillstrackingapplication.model;
 
 import java.util.HashSet;
 import java.util.Set;

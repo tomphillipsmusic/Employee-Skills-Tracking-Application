@@ -1,4 +1,4 @@
-package com.example.employeeskillstrackingapplication;
+package com.example.employeeskillstrackingapplication.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import exceptions.EmployeeNotFoundException;
-import exceptions.SkillNotFoundException;
+import com.example.employeeskillstrackingapplication.exceptions.EmployeeNotFoundException;
+import com.example.employeeskillstrackingapplication.exceptions.SkillNotFoundException;
+import com.example.employeeskillstrackingapplication.model.Skill;
+import com.example.employeeskillstrackingapplication.repository.SkillRepository;
 
 @Service
 public class SkillService {
