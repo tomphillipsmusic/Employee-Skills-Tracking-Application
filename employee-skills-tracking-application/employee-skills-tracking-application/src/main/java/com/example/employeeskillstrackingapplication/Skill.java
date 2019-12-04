@@ -28,7 +28,7 @@ public class Skill {
 	private long skillId;
 	private String name;
 	private String description;
-	private int rating;
+	private Integer rating;
 
 	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
 	 @JoinColumn(name = "employee_id", nullable = false)
@@ -60,7 +60,7 @@ public class Skill {
 		this.description = description;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
@@ -72,7 +72,7 @@ public class Skill {
 		return description;
 	}
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 

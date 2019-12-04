@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import exceptions.EmployeeNotFoundException;
-import exceptions.InvalidEmployeeDataException;
+import exceptions.InvalidDataException;
 
 @CrossOrigin
 @RestController
@@ -36,7 +36,7 @@ public class EmployeeRestController {
 		if (newEmployee != null) {
 			return employee.getEmployeeId();
 		} else {
-			throw new InvalidEmployeeDataException("Invalid Perficient employee data sent to server.");
+			throw new InvalidDataException("Invalid Perficient employee data sent to server.");
 		}
 	}
 
@@ -53,7 +53,7 @@ public class EmployeeRestController {
 		if (newEmployee != null) {
 			return employee.getEmployeeId();
 		} else {
-			throw new InvalidEmployeeDataException("Invalid Perficient employee data sent to server.");
+			throw new InvalidDataException("Invalid Perficient employee data sent to server.");
 		}
 	}
 
