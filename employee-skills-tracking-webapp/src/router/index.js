@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Skills from "../views/Skills.vue";
+import PageNotFound from "../views/PageNotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,11 @@ const routes = [
     path: "/employees/:employeeId/skills",
     name: Skills,
     component: Skills
+  },
+  {
+    path: "*",
+    name: PageNotFound,
+    component: PageNotFound
   }
 ];
 
