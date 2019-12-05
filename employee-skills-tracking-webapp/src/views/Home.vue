@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <employee-table @close-add-employee="formCompleted" ></employee-table>
+    <employee-table @close-add-employee="formCompleted"></employee-table>
     <button
       class="btn btn-primary"
       v-if="!employeeForm"
@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      employeeForm: false,
+      employeeForm: false
     };
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
     formCompleted() {
       this.employeeForm = false;
     },
-        getEmployees() {
+    getEmployees() {
       fetch(this.apiURL)
         .then(response => {
           return response.json();
@@ -47,7 +47,7 @@ export default {
           this.employees = employees;
         })
         .catch(err => console.error(err));
-    },
+    }
   }
 };
 </script>

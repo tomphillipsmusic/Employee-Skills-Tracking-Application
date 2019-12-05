@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.employeeskillstrackingapplication.exceptions.EmployeeNotFoundException;
 import com.example.employeeskillstrackingapplication.exceptions.SkillNotFoundException;
 import com.example.employeeskillstrackingapplication.model.Skill;
 import com.example.employeeskillstrackingapplication.repository.SkillRepository;
@@ -20,8 +19,7 @@ public class SkillService {
 
 	public Skill getSkillById(Long skillId) {
 		Optional<Skill> skillOp = skillRepository.findById(skillId);
-		Skill requestedSkill = skillOp
-				.orElseThrow(() -> new SkillNotFoundException("Skill Not Found"));
+		Skill requestedSkill = skillOp.orElseThrow(() -> new SkillNotFoundException("Skill Not Found"));
 		return requestedSkill;
 	}
 
@@ -42,31 +40,21 @@ public class SkillService {
 		return allSkills;
 	}
 
-	public Skill save(Skill skill) {
-		if (isValidSkill(skill)) {
-			return skillRepository.save(skill);
-		}
-		return null;
+	public Skill saveSkill(Skill skill) {
+		return skillRepository.save(skill);
+
 	}
 
-	public Skill update(Skill skill) {
+	public Skill updateSkill(Skill skill) {
 		long skillId = skill.getSkillId();
-		System.out.println(skillId);
 		if (getSkillById(skillId) == null) {
 			throw new SkillNotFoundException("Employee Skill Not Found");
 		}
-		return save(skill);
+		return saveSkill(skill);
 	}
 
 	public void delete(Long id) {
 		skillRepository.deleteById(id);
-	}
-
-	private boolean isValidSkill(Skill skill) {
-		if (skill.getName() != null && skill.getRating() != null && skill.getDescription() != null) {
-			return true;
-		}
-		return false;
 	}
 
 }

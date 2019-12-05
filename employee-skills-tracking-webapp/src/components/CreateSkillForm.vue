@@ -86,7 +86,7 @@ export default {
           if (response.ok) {
             console.log(this.skill);
           }
-          window.location.href=`/employees/${this.skill.employeeId}/skills`;
+          window.location.href = `/employees/${this.skill.employeeId}/skills`;
         })
         .catch(err => console.error(err));
     },

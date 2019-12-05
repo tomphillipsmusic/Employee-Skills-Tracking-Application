@@ -31,19 +31,17 @@ public class EmployeeService {
 		return requestedEmployee;
 	}
 
-	public Employee save(Employee employee) {
-		if (isValidEmployee(employee)) {
-			return employeeRepository.save(employee);
-		}
-		return null;
+	public Employee saveEmployee(Employee employee) {
+		return employeeRepository.save(employee);
+
 	}
-	
-	public Employee update(Employee employee) {
+
+	public Employee updateEmployee(Employee employee) {
 		int employeeId = employee.getEmployeeId();
 		if (getEmployeeById(employeeId) == null) {
 			throw new EmployeeNotFoundException("Perficient Employee Not Found");
 		}
-		return save(employee);
+		return saveEmployee(employee);
 	}
 
 	public void delete(int id) {
@@ -51,14 +49,6 @@ public class EmployeeService {
 			throw new EmployeeNotFoundException("Perficient Employee Not Found");
 		}
 		employeeRepository.deleteById(id);
-	}
-
-	private boolean isValidEmployee(Employee employee) {
-		if (employee.getFirstName() != null && employee.getLastName() != null && employee.getPosition() != null) {
-			return true;
-		}
-
-		return false;
 	}
 
 }

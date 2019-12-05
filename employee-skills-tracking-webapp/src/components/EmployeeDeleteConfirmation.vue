@@ -16,7 +16,9 @@
           />
         </div>
         <div class="col">
-          <button class="btn btn-secondary" v-on:click="closeConfirmation">No</button>
+          <button class="btn btn-secondary" v-on:click="closeConfirmation">
+            No
+          </button>
         </div>
         <div class="col"></div>
       </div>
@@ -64,6 +66,4 @@ export default {
 };
 </script>
 
-<style>
-
-</style>
+<style></style>

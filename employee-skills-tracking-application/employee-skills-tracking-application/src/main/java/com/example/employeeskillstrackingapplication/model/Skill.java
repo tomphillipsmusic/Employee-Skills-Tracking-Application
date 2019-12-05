@@ -23,22 +23,21 @@ public class Skill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long skillId;
-	
-	@NotBlank(message="Skill name is mandatory")
+
 	private String name;
-	
-	@NotBlank(message="Skill description is mandatory")
+
+	@NotBlank(message = "Skill description is mandatory")
 	private String description;
-	
-	@Range(min=1, max=5, message="Rating must be between 1 and 5")
+
+	@Range(min = 1, max = 5, message = "Rating must be between 1 and 5")
 	private Integer rating;
 
-	 @ManyToOne(fetch = FetchType.LAZY, optional = false)
-	 @JoinColumn(name = "employee_id", nullable = false)
-	 @OnDelete(action = OnDeleteAction.CASCADE)
-	 @JsonIgnore
-	 private Employee employee;
-	 
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@JoinColumn(name = "employee_id", nullable = false)
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	@JsonIgnore
+	private Employee employee;
+
 	public Employee getEmployee() {
 		return employee;
 	}

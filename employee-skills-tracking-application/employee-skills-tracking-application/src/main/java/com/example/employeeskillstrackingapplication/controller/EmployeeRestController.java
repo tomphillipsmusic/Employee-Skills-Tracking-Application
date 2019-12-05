@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.employeeskillstrackingapplication.exceptions.EmployeeNotFoundException;
-import com.example.employeeskillstrackingapplication.exceptions.InvalidDataException;
 import com.example.employeeskillstrackingapplication.model.Employee;
 import com.example.employeeskillstrackingapplication.service.EmployeeService;
 
@@ -41,12 +38,9 @@ public class EmployeeRestController {
 	@PostMapping("employees")
 	@ResponseStatus(HttpStatus.CREATED)
 	public int saveEmployee(@Valid @RequestBody Employee employee) {
-		Employee newEmployee = employeeService.save(employee);
-		if (newEmployee != null) {
-			return employee.getEmployeeId();
-		} else {
-			throw new InvalidDataException("Invalid Perficient employee data sent to server.");
-		}
+		employeeService.saveEmployee(employee);
+		return employee.getEmployeeId();
+
 	}
 
 	@GetMapping("employees/{id}")
@@ -58,12 +52,9 @@ public class EmployeeRestController {
 	@PutMapping("/employees/{id}")
 	public int updateEmployee(@PathVariable("id") int employeeId, @Valid @RequestBody Employee employee) {
 		employee.setEmployeeId(employeeId);
-		Employee newEmployee = employeeService.update(employee);
-		if (newEmployee != null) {
-			return employee.getEmployeeId();
-		} else {
-			throw new InvalidDataException("Invalid Perficient employee data sent to server.");
-		}
+		employeeService.updateEmployee(employee);
+		return employee.getEmployeeId();
+
 	}
 
 	@DeleteMapping("/employees/{id}")
@@ -71,19 +62,17 @@ public class EmployeeRestController {
 	public void deleteEmployee(@PathVariable("id") int employeeId) {
 		employeeService.delete(employeeId);
 	}
-	
+
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Map<String, String> handleValidationExceptions(
-	  MethodArgumentNotValidException ex) {
-	    Map<String, String> errors = new HashMap<>();
-	    ex.getBindingResult().getAllErrors().forEach((error) -> {
-	        String fieldName = ((FieldError) error).getField();
-	        String errorMessage = error.getDefaultMessage();
-	        errors.put(fieldName, errorMessage);
-	    });
-	    return errors;
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		Map<String, String> errors = new HashMap<>();
+		ex.getBindingResult().getAllErrors().forEach((error) -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
 	}
-	
 
 }
