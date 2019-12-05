@@ -18,7 +18,9 @@
             <label for="rating">Rating</label>
             <input
               class="form-control"
-              type="text"
+              type="number"
+              min="1"
+              max="5"
               name="rating"
               v-model="skill.rating"
             />
