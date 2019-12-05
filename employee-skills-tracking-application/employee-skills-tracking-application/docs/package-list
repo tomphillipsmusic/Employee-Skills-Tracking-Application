@@ -1,1 +1,6 @@
 com.example.employeeskillstrackingapplication
+com.example.employeeskillstrackingapplication.controller
+com.example.employeeskillstrackingapplication.exceptions
+com.example.employeeskillstrackingapplication.model
+com.example.employeeskillstrackingapplication.repository
+com.example.employeeskillstrackingapplication.service
