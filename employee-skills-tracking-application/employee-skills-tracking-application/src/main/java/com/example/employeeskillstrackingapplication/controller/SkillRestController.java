@@ -1,11 +1,18 @@
 package com.example.employeeskillstrackingapplication.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,7 +44,7 @@ public class SkillRestController {
 
 	@PostMapping("/employees/{employeeId}/skills")
 	@ResponseStatus(HttpStatus.CREATED)
-	public long saveSkill(@RequestBody Skill skill, @PathVariable("employeeId") int employeeId) {
+	public long saveSkill(@Valid @RequestBody Skill skill, @PathVariable("employeeId") int employeeId) {
 		Employee employee = employeeService.getEmployeeById(employeeId);
 		if (employee == null) {
 			throw new InvalidDataException("Invalid Perficient employee data sent to server.");
@@ -62,7 +69,7 @@ public class SkillRestController {
 	}
 
 	@PutMapping("/employees/{employeeId}/skills/{skillId}")
-	public long updateSkill(@RequestBody Skill skill, @PathVariable("employeeId") int employeeId,
+	public long updateSkill(@Valid @RequestBody Skill skill, @PathVariable("employeeId") int employeeId,
 			@PathVariable("skillId") long skillId) {
 		Employee employee = employeeService.getEmployeeById(employeeId);
 		if (employee == null) {
@@ -88,6 +95,19 @@ public class SkillRestController {
 		}
 		Skill skillToDelete = skillService.getSkillById(skillId);
 		skillService.delete(skillId);
+	}
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(
+	  MethodArgumentNotValidException ex) {
+	    Map<String, String> errors = new HashMap<>();
+	    ex.getBindingResult().getAllErrors().forEach((error) -> {
+	        String fieldName = ((FieldError) error).getField();
+	        String errorMessage = error.getDefaultMessage();
+	        errors.put(fieldName, errorMessage);
+	    });
+	    return errors;
 	}
 
 }

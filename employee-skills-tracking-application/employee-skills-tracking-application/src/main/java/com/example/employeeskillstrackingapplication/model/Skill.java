@@ -1,21 +1,18 @@
 package com.example.employeeskillstrackingapplication.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,8 +23,14 @@ public class Skill {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long skillId;
+	
+	@NotBlank(message="Skill name is mandatory")
 	private String name;
+	
+	@NotBlank(message="Skill description is mandatory")
 	private String description;
+	
+	@Range(min=1, max=5, message="Rating must be between 1 and 5")
 	private Integer rating;
 
 	 @ManyToOne(fetch = FetchType.LAZY, optional = false)

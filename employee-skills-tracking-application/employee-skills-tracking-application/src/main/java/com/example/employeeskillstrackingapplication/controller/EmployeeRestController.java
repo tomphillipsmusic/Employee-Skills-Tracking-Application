@@ -1,11 +1,18 @@
 package com.example.employeeskillstrackingapplication.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +40,7 @@ public class EmployeeRestController {
 
 	@PostMapping("employees")
 	@ResponseStatus(HttpStatus.CREATED)
-	public int saveEmployee(@RequestBody Employee employee) {
+	public int saveEmployee(@Valid @RequestBody Employee employee) {
 		Employee newEmployee = employeeService.save(employee);
 		if (newEmployee != null) {
 			return employee.getEmployeeId();
@@ -49,7 +56,7 @@ public class EmployeeRestController {
 	}
 
 	@PutMapping("/employees/{id}")
-	public int updateEmployee(@PathVariable("id") int employeeId, @RequestBody Employee employee) {
+	public int updateEmployee(@PathVariable("id") int employeeId, @Valid @RequestBody Employee employee) {
 		employee.setEmployeeId(employeeId);
 		Employee newEmployee = employeeService.update(employee);
 		if (newEmployee != null) {
@@ -64,5 +71,19 @@ public class EmployeeRestController {
 	public void deleteEmployee(@PathVariable("id") int employeeId) {
 		employeeService.delete(employeeId);
 	}
+	
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public Map<String, String> handleValidationExceptions(
+	  MethodArgumentNotValidException ex) {
+	    Map<String, String> errors = new HashMap<>();
+	    ex.getBindingResult().getAllErrors().forEach((error) -> {
+	        String fieldName = ((FieldError) error).getField();
+	        String errorMessage = error.getDefaultMessage();
+	        errors.put(fieldName, errorMessage);
+	    });
+	    return errors;
+	}
+	
 
 }

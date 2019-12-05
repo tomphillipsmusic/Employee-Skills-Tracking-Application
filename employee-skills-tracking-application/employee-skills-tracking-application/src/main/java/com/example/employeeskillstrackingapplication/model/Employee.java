@@ -1,19 +1,11 @@
 package com.example.employeeskillstrackingapplication.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="employee")
@@ -22,8 +14,14 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int employeeId;
+	
+	@NotBlank(message="First name is mandatory")
 	private String firstName;
+	
+	@NotBlank(message="Last name is mandatory")
 	private String lastName;
+	
+	@NotBlank(message="Employee position is mandatory")
 	private String position;
 	
 	public int getEmployeeId() {
